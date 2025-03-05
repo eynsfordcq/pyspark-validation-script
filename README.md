@@ -1,4 +1,4 @@
-# Spark Data Validation Tool
+# pyspark-validation-script
 
 ## Overview
 
@@ -68,3 +68,11 @@ rm -f helpers.zip \
     --py-files helpers.zip \
     spark_validation.py -m yarn [arguments]
 ```
+
+## Development
+
+Start the environment in devcontainer. In vscode, in command palette, `Dev Containers: Reopen in Container`
+
+Once in the container, simply do `pip install -r requirements.txt`.
+
+> TODO: include minio as s3 compatible storage in docker compose.
