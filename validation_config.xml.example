@@ -1,0 +1,58 @@
+<config>
+    <setting>
+        <validation_name>validation_demo</validation_name>
+        <validation_threshold>5</validation_threshold>
+        <validation_type>hdfs-jdbc</validation_type>
+        <validate_content>false</validate_content>
+        <granularity>hourly</granularity>
+        <defaulttimedelay>3600</defaulttimedelay>
+        <source_name>psql_table</source_name>
+        <destination_name>hdfs_table</destination_name>
+        <summary_log>/path/to/validation/date_record=%Y%m%d</summary_log>
+    </setting>
+
+    <source>
+        <type>database</type>
+        <database_config>
+            <format>jdbc</format>
+            <options>
+                <url>jdbc:postgresql://myhost:5432/mydb</url>
+                <user>myuser</user>
+                <password>password123</password>
+                <driver>org.postgresql.Driver</driver>
+                <dbtable>table</dbtable>
+                <!-- <query><![CDATA[
+                    SELECT 
+                        *
+                    FROM table
+                    WHERE created_time = '%Y-%m-%d'
+                ]]></query> -->
+            </options>
+        </database_config>
+    </source>
+
+    <!-- <target>
+        <type>file</type>
+        <file_config>
+            <format>csv</format>
+            <path>/path/to/csv</path>
+            <options>
+                <sep>,</sep>
+                <quote>"</quote>
+                <quoteAll>true</quoteAll>
+                <escapeQuotes>true</escapeQuotes>
+                <header>true</header>
+                <multiLine>true</multiLine>
+            </options>
+        </file_config>
+    </target> -->
+
+    <target>
+        <type>file</type>
+        <file_config>
+            <format>parquet</format>
+            <path>/path/to/parquet</path>
+            <options></options>
+        </file_config>
+    </target>
+</config>
